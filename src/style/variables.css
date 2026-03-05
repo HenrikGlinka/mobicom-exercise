@@ -1,0 +1,22 @@
+:root {
+/* Colors */
+    --color-white: #FFFFFF;
+    --color-gray-pale: #FAFAFA;
+    --color-gray-light: #CBCCD2;
+    --color-gray: #878A96;
+    --color-gray-dark: #333333;
+    --color-dark: #1E1F25;
+
+    --color-primary: #0F407B;
+    --color-success: #35CF94;
+
+/* Typography */
+    --default-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    --h1-size: 1.375rem;
+    --h2-size: 1rem;
+    --h3-size: 0.875rem;
+
+/* Spacing */
+    --margins: 0.875rem;
+}
