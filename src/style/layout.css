@@ -1,9 +1,9 @@
 body {
     background-color: var(--color-gray-pale);
-    font-family: var(--default-font-family);
+    font-family: var(--font-default);
 
     display: grid;
-    grid-template-columns: var(--margins) 1fr var(--margins);
+    grid-template-columns: var(--spacing-default) 1fr var(--spacing-default);
 }
 
 body > * {
@@ -16,14 +16,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: var(--h1-size);
+    font-size: var(--text-h1);
     text-align: center;
 }
 
 h2 {
-    font-size: var(--h2-size);
+    font-size: var(----text-h2);
 }
 
 h3 {
-    font-size: var(--h3-size);
+    font-size: var(--text-h3);
 }

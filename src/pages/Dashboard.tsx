@@ -1,14 +1,6 @@
-import { useState } from "react"
-import { getStatistics } from "../utilities/smartHome";
-import { getDateString } from "../utilities/dateString";
+import EnergyUsage from "../components/EnergyUsage";
 
 export default function Dashboard() {
-
-    const yesterday = getDateString(new Date(), -1);
-    const [statistics] = useState(getStatistics(22, yesterday));
-
-    console.log(statistics);
-    
 
     return (
         <>
@@ -19,6 +11,7 @@ export default function Dashboard() {
             <main>
                 <section>
                     <h2>Energi Forbrug</h2>
+                    <EnergyUsage />
                 </section>
 
                 <section>
