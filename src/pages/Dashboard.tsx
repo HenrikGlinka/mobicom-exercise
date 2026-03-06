@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { getAllDevices } from "../utilities/smartHome";
+import { getStatistics } from "../utilities/smartHome";
+import { getDateString } from "../utilities/dateString";
 
 export default function Dashboard() {
 
-    const [devices] = useState(getAllDevices());
+    const yesterday = getDateString(new Date(), -1);
+    const [statistics] = useState(getStatistics(22, yesterday));
 
-    console.log(devices);
+    console.log(statistics);
     
 
     return (

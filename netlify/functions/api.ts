@@ -1,21 +1,26 @@
 import type { Handler, HandlerEvent } from "@netlify/functions";
+import dotenv from 'dotenv';
 
-const API_URL = 'https://exercise.mobicom-pro.com/api/';
-const TOKEN = 'ec65af2d7fa7576c78edcefee43183ee32fde218daa25c2e2d5e6a6bde88cbac';
+dotenv.config();
+
+const API_URL = process.env.MOBICOM_API_URL
+const TOKEN = process.env.MOBICOM_API_TOKEN;
 
 export const handler: Handler = async (event: HandlerEvent) => {
-    const path = event.path.replace('/.netlify/functions/api/', '');
-    const url = `${API_URL}${path}`;
+    const path = event.path.replace('/api/', '');
+    const parameters = new URLSearchParams(event.queryStringParameters as Record<string, string>).toString();
+    const url = new URL(`${API_URL}${path}`);
 
-    console.log(url);
-    
+    if (parameters) {
+        url.search = parameters;
+    }
 
     const options: RequestInit = {
         method: event.httpMethod,
         headers: {
             'Authorization': `Bearer ${TOKEN}`,
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/jon'
         },
         body: event.body || undefined
     };
