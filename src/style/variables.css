@@ -19,6 +19,7 @@
 
 /* Spacing */
     --spacing-default: 0.875rem;
+    --spacing-max-width: 50rem;
 
 /* Shadows */
     --shadow-default: 0px 2px 10px #0000001A;

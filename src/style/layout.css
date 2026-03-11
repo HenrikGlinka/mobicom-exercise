@@ -1,18 +1,21 @@
+:root {
+    interpolate-size: allow-keywords;
+}
+
 body {
     background-color: var(--color-gray-pale);
     font-family: var(--font-default);
-
-    display: grid;
-    grid-template-columns: var(--spacing-default) 1fr var(--spacing-default);
 }
 
-body > * {
-    grid-column: 2;
+#root {
+    max-width: var(--spacing-max-width);
+    margin-inline: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--color-dark);
     font-weight: normal;
+    margin-bottom: var(--spacing-default);
 }
 
 h1 {
@@ -21,9 +24,21 @@ h1 {
 }
 
 h2 {
-    font-size: var(----text-h2);
+    font-size: var(--text-h2);
 }
 
 h3 {
     font-size: var(--text-h3);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-default);
+    padding-block: var(--spacing-default);
+}
+
+
+main > *:not(.full-bleed) {
+    margin-inline: var(--spacing-default);
 }
