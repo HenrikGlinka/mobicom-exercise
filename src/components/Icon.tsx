@@ -31,7 +31,6 @@ export default function Icon({ type, className }: { type: string; className?: st
         "away-off": { src: iconAwayOff},
         "sleep-on": { src: iconSleepOn},
         "sleep-off": { src: iconSleepOff},
-
     };
 
     return (
