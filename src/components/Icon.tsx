@@ -11,7 +11,7 @@ import iconAwayOff from "../assets/icons/icon_away_off.png";
 import iconSleepOn from "../assets/icons/icon_sleep_on.png";
 import iconSleepOff from "../assets/icons/icon_sleep_off.png";
 
-export default function Icon({ type, className }: { type: string; className?: string }) {
+export default function Icon({ type, className, size }: { type: string; className?: string; size?: number}) {
 
     const icons: Record<string, { src: string, rotation?: number, size?: { width: string, height: string }, filter?: string }> = {
         "statistics": { src: iconStatistics },
@@ -39,8 +39,8 @@ export default function Icon({ type, className }: { type: string; className?: st
             alt={type}
             style={{ 
                 rotate: `${icons[type]?.rotation ?? 0}deg`,
-                width: icons[type]?.size ? icons[type].size.width : '1em',
-                height: icons[type]?.size ? icons[type].size.height : '1em',
+                width: icons[type]?.size ? icons[type].size.width : `${size || 1}em`,
+                height: icons[type]?.size ? icons[type].size.height : `${size || 1}em`,
                 filter: icons[type]?.filter ? icons[type].filter : 'none',
             }}
             className={`object-center object-scale-down transition-all duration-200 ease-in-out ${className || ''}`}

@@ -1,10 +1,17 @@
+import { useLoaderData } from "react-router";
 import BurgerButton from "../components/BurgerButton";
 import EnergyUsage from "../components/EnergyUsage";
+import SwitchInput from "../components/SwitchInput";
+import UIBlock from "../components/UIBlock";
 import UIBlockContainer from "../components/UIBlockContainer";
 import UICheckbox from "../components/UICheckbox";
 import UIRadio from "../components/UIRadio";
+import UISwitchList from "../components/UISwitchList";
+import type dashboardLoader from "../loaders/dashboardLoader";
 
 export default function Dashboard() {
+
+    const { devices, statistics } = useLoaderData() as Awaited<ReturnType<typeof dashboardLoader>>;
 
     return (
         <>
@@ -15,8 +22,8 @@ export default function Dashboard() {
 
             <main>
                 <section className="full-bleed">
-                    <UIBlockContainer title="Energi Forbrug" open={true}  locked={true}>
-                        <EnergyUsage />
+                    <UIBlockContainer title="Energi Forbrug" open={true} locked={true}>
+                        <EnergyUsage today={statistics[1]} yesterday={statistics[0]} />
                     </UIBlockContainer>
                 </section>
 
@@ -37,8 +44,46 @@ export default function Dashboard() {
                     </UIBlockContainer>
                 </section>
 
-                <section>
-                    <h2>Smart indstillinger</h2>
+                <section className="grid grid-cols-2 gap-default">
+                    <h2 className="col-span-2">Smart indstillinger</h2>
+                    <UIBlock>
+                        <h3>Lys i Stuen</h3>
+                        <UISwitchList>
+                            <li>Alt Lys <SwitchInput /></li>
+                            <li>Loftlampe <SwitchInput /></li>
+                            <li>Bordlampe 1 <SwitchInput /></li>
+                            <li>Bordlampe 2 <SwitchInput /></li>
+                        </UISwitchList>
+                    </UIBlock>
+
+                    <UIBlock>
+                        <h3>Varme i Stuen</h3>
+                        <UISwitchList>
+                            <li>Fan Coil <SwitchInput /></li>
+                        </UISwitchList>
+
+
+                    </UIBlock>
+
+                    <UIBlock>
+                        <h3>Lys i Køkken</h3>
+                        <UISwitchList>
+                            <li>Alt Lys <SwitchInput /></li>
+                            <li>Loftlampe <SwitchInput /></li>
+                            <li>Bordlampe 1 <SwitchInput /></li>
+                            <li>Bordlampe 2 <SwitchInput /></li>
+                        </UISwitchList>
+                    </UIBlock>
+
+                    <UIBlock>
+                        <h3>Varme i Soveværelse</h3>
+                        <UISwitchList>
+                            <li>Alt Lys <SwitchInput /></li>
+                            <li>Loftlampe <SwitchInput /></li>
+                            <li>Bordlampe 1 <SwitchInput /></li>
+                            <li>Bordlampe 2 <SwitchInput /></li>
+                        </UISwitchList>
+                    </UIBlock>
                 </section>
             </main>
         </>

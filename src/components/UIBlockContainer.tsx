@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 
-export default function UIBlockContainer({ title, open = false, children, locked = false }: { title: string; open?: boolean; children: React.ReactNode; locked?: boolean }) {
+export default function UIBlockContainer({ title, open = false, children, locked = false }: { title: string; open?: boolean; children?: React.ReactNode; locked?: boolean }) {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(open);
     const detailsRef = useRef<HTMLDetailsElement>(null);
 
     useEffect(() => {
