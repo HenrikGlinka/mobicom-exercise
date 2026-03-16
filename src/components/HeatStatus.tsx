@@ -1,12 +1,12 @@
 import Icon from "./Icon";
 
-export default function HeatStatus(temperature: number, mode: 'Manual' | 'Tidsplan' | 'Boost') {
+export default function HeatStatus({temperature, mode} : {temperature: number, mode: 'manual' | 'timed' | 'boost' | 'off'}) {
 
     return (
-        <div className="grid grid-cols-2 grid-rows-2">
-            <Icon type="" />
-            <p>{temperature}°C</p>
-            <p>{mode} - mode</p>
+        <div className="grid grid-cols-[auto_1fr] grid-rows-[auto_auto]">
+            <Icon type="temperature" size={3} className="row-span-2" />
+            <p className="text-xl leading-4 self-end">{temperature.toFixed()}°C</p>
+            <p className="column-start-2row-start-2 text-xs self-start text-gray">{mode[0].toUpperCase() + mode.slice(1)} - mode</p>
         </div>
     )
 }

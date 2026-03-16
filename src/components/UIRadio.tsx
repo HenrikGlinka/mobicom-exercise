@@ -4,8 +4,8 @@ import UIBlock from "./UIBlock";
 export default function UIRadio({ label, group, checked = false, icon, iconChecked, onChange }: { label: string; group: string; checked?: boolean; icon: string; iconChecked: string; onChange?: (checked: boolean) => void }) {
 
     return (
-        <UIBlock className="[&:has(input:checked)]:bg-primary text-xs text-gray [&:has(input:checked)]:text-white">
-            <label className="flex items-center gap-2 cursor-pointer">
+        <UIBlock className="[&:has(input:checked)]:bg-primary text-xs text-gray [&:has(input:checked)]:text-white grow">
+            <label className="flex items-center justify-center gap-2 cursor-pointer">
                 <input
                     type="radio"
                     name={group}

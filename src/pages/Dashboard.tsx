@@ -8,10 +8,20 @@ import UICheckbox from "../components/UICheckbox";
 import UIRadio from "../components/UIRadio";
 import UISwitchList from "../components/UISwitchList";
 import type dashboardLoader from "../loaders/dashboardLoader";
+import HeatStatus from "../components/HeatStatus";
+import type { Device } from "../utilities/smartHome";
+import UIButton from "../components/UIButton";
 
 export default function Dashboard() {
 
     const { devices, statistics } = useLoaderData() as Awaited<ReturnType<typeof dashboardLoader>>;
+
+    const deviceList = Object.fromEntries(Object.entries(devices).map(
+        ([, device]) => [(device as Device).name.toLowerCase(), device] as [string, Device]
+    ));
+
+    console.log(deviceList);
+    
 
     return (
         <>
@@ -37,7 +47,7 @@ export default function Dashboard() {
                 </section>
 
                 <section className="full-bleed">
-                    <UIBlockContainer title="Forudindstillet" open={true} locked={true}>
+                    <UIBlockContainer title="Forudindstillet" open={true} locked={true} justify="stretch">
                         <UIRadio label="Hjemme" group="presets" checked={true} icon="home-off" iconChecked="home-on" />
                         <UIRadio label="Ude" group="presets" icon="away-off" iconChecked="away-on" />
                         <UIRadio label="Sover" group="presets" icon="sleep-off" iconChecked="sleep-on" />
@@ -56,12 +66,13 @@ export default function Dashboard() {
                         </UISwitchList>
                     </UIBlock>
 
-                    <UIBlock>
-                        <h3>Varme i Stuen</h3>
+                    <UIBlock className="flex flex-col justify-between">
+                        <h3 className="mb-0!">Varme i Stuen</h3>
                         <UISwitchList>
-                            <li>Fan Coil <SwitchInput /></li>
+                            <li>Fan Coil <SwitchInput checked={Number(deviceList.stue?.vent_level) > 0} /></li>
                         </UISwitchList>
-
+                        <HeatStatus temperature={Number(deviceList.stue?.current_temp)} mode={deviceList.stue?.work_mode} />
+                        <UIButton to="/heating" label="Indstillinger" />
 
                     </UIBlock>
 

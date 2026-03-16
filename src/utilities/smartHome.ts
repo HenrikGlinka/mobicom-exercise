@@ -1,7 +1,10 @@
 export type Device = {
+    current_temp: string,
+    id: number,
     name: string,
-    target_temp: number,
-    vent_level: "1" | "2" | "3" | "4" | "5" | "6",
+    target_temp: string,
+    user_id: string,
+    vent_level: "0" | "1" | "2" | "3" | "4" | "5",
     work_mode: "manual" | "timed" | "boost" | "off"
 }
 

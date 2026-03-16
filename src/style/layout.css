@@ -8,7 +8,7 @@ body {
 }
 
 #root {
-    max-width: var(--spacing-max-width);
+    max-width: min(var(--spacing-max-width), 100vw);
     margin-inline: auto;
 }
 
