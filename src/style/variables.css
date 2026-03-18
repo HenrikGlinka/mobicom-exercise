@@ -17,6 +17,9 @@
     --text-h2: 1rem;
     --text-h3: 0.875rem;
 
+    --tracking-default: 1.38px;
+    --tracking-small: 1px;
+
 /* Spacing */
     --spacing-default: 0.875rem;
     --spacing-max-width: 50rem;

@@ -11,6 +11,7 @@ import type dashboardLoader from "../loaders/dashboardLoader";
 import HeatStatus from "../components/HeatStatus";
 import type { Device } from "../utilities/smartHome";
 import UIButton from "../components/UIButton";
+import Navigation from "../components/Navigation";
 
 export default function Dashboard() {
 
@@ -21,16 +22,16 @@ export default function Dashboard() {
     ));
 
     console.log(deviceList);
-    
+
 
     return (
         <>
-            <header className="grid grid-cols-[1fr_3fr_1fr] content-center items-center px-default py-10">
+            <header className="grid grid-cols-[1fr_3fr_1fr] content-center items-center px-default pt-10 pb-5">
                 <BurgerButton />
                 <h1 className="m-0!">Smart Home</h1>
             </header>
 
-            <main>
+            <main className="flex flex-col overflow-hidden">
                 <section className="full-bleed">
                     <UIBlockContainer title="Energi Forbrug" open={true} locked={true}>
                         <EnergyUsage today={statistics[1]} yesterday={statistics[0]} />
@@ -54,49 +55,76 @@ export default function Dashboard() {
                     </UIBlockContainer>
                 </section>
 
-                <section className="grid grid-cols-2 gap-default">
-                    <h2 className="col-span-2">Smart indstillinger</h2>
-                    <UIBlock>
-                        <h3>Lys i Stuen</h3>
-                        <UISwitchList>
-                            <li>Alt Lys <SwitchInput /></li>
-                            <li>Loftlampe <SwitchInput /></li>
-                            <li>Bordlampe 1 <SwitchInput /></li>
-                            <li>Bordlampe 2 <SwitchInput /></li>
-                        </UISwitchList>
-                    </UIBlock>
+                <section className="flex flex-col overflow-hidden full-bleed px-default">
+                    <h2>Smart indstillinger</h2>
+                    <div className="overflow-hidden overflow-y-scroll">
+                        <div className="grid grid-cols-2 auto-rows-fr gap-default shrink-0 pb-default">
+                            <UIBlock>
+                                <h3>Lys i Stuen</h3>
+                                <UISwitchList>
+                                    <li>Alt Lys <SwitchInput /></li>
+                                    <li>Loftlampe <SwitchInput /></li>
+                                    <li>Bordlampe 1 <SwitchInput /></li>
+                                    <li>Bordlampe 2 <SwitchInput /></li>
+                                </UISwitchList>
+                            </UIBlock>
 
-                    <UIBlock className="flex flex-col justify-between">
-                        <h3 className="mb-0!">Varme i Stuen</h3>
-                        <UISwitchList>
-                            <li>Fan Coil <SwitchInput checked={Number(deviceList.stue?.vent_level) > 0} /></li>
-                        </UISwitchList>
-                        <HeatStatus temperature={Number(deviceList.stue?.current_temp)} mode={deviceList.stue?.work_mode} />
-                        <UIButton to="/heating" label="Indstillinger" />
+                            <UIBlock className="flex flex-col justify-between">
+                                <h3 className="mb-0!">Varme i Stuen</h3>
+                                <UISwitchList>
+                                    <li>Fan Coil <SwitchInput checked={Number(deviceList.stue?.vent_level) > 0} /></li>
+                                </UISwitchList>
+                                <HeatStatus temperature={Number(deviceList.stue?.current_temp)} mode={deviceList.stue?.work_mode} />
+                                <UIButton to="/heating" icon="temp-settings" label="Indstillinger" />
+                            </UIBlock>
 
-                    </UIBlock>
+                            <UIBlock className="flex flex-col justify-between">
+                                <h3 className="mb-0!">Lys i Køkken</h3>
+                                <UISwitchList>
+                                    <li>Køkkenbord <SwitchInput /></li>
+                                    <li>Loftlampe <SwitchInput /></li>
+                                </UISwitchList>
+                                <h3 className="mb-0!">Varme i Køkken</h3>
+                                <UISwitchList>
+                                    <li>Fan Coil <SwitchInput /></li>
+                                </UISwitchList>
+                            </UIBlock>
 
-                    <UIBlock>
-                        <h3>Lys i Køkken</h3>
-                        <UISwitchList>
-                            <li>Alt Lys <SwitchInput /></li>
-                            <li>Loftlampe <SwitchInput /></li>
-                            <li>Bordlampe 1 <SwitchInput /></li>
-                            <li>Bordlampe 2 <SwitchInput /></li>
-                        </UISwitchList>
-                    </UIBlock>
+                            <UIBlock className="flex flex-col justify-between">
+                                <h3 className="mb-0!">Varme i Soveværelse</h3>
+                                <UISwitchList>
+                                    <li>Fan Coil <SwitchInput /></li>
+                                </UISwitchList>
+                                <HeatStatus temperature={17} mode='manual' />
+                                <UIButton icon="temp-settings" label="Indstillinger" />
+                            </UIBlock>
 
-                    <UIBlock>
-                        <h3>Varme i Soveværelse</h3>
-                        <UISwitchList>
-                            <li>Alt Lys <SwitchInput /></li>
-                            <li>Loftlampe <SwitchInput /></li>
-                            <li>Bordlampe 1 <SwitchInput /></li>
-                            <li>Bordlampe 2 <SwitchInput /></li>
-                        </UISwitchList>
-                    </UIBlock>
+                            <UIBlock className="flex flex-col justify-between">
+                                <h3 className="mb-0!">Lys i Indkørsel</h3>
+                                <UISwitchList>
+                                    <li>Væglamper <SwitchInput /></li>
+                                    <li>Bedlamper <SwitchInput /></li>
+                                </UISwitchList>
+                                <h3 className="mb-0!">Lys i Garage</h3>
+                                <UISwitchList>
+                                    <li>Alt lys <SwitchInput /></li>
+                                </UISwitchList>
+                            </UIBlock>
+
+                            <UIBlock className="flex flex-col justify-between">
+                                <h3 className="mb-0!">Varme i Badeværelse</h3>
+                                <UISwitchList>
+                                    <li>Gulvvarme <SwitchInput /></li>
+                                </UISwitchList>
+                                <HeatStatus temperature={21} mode='timed' />
+                                <UIButton icon="temp-settings" label="Indstillinger" />
+                            </UIBlock>
+                        </div>
+                    </div>
+
                 </section>
             </main>
+            <Navigation />
         </>
     )
 }

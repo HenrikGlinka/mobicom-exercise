@@ -22,7 +22,7 @@ export default function UIBlockContainer({ title, open = false, children, locked
         >
             <summary style={{justifyContent: justify}} className='flex items-center gap-1 px-default pointer-events-none mb-default'>
                 <h2 className="mr-auto mb-0!">{title}</h2>
-                <p className={`${locked ? 'hidden' : ''} pointer-events-auto cursor-pointer flex items-center gap-2`}>
+                <p className={`${locked ? 'hidden' : ''} pointer-events-auto cursor-pointer flex items-center gap-2 text-xs`}>
                     <span>Vis alle</span>
                     <Icon type={isOpen ? "chevronDown" : "chevronRight"} />
                 </p>

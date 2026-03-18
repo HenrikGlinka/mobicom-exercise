@@ -10,7 +10,9 @@ import iconAwayOn from "../assets/icons/icon_away_on.png";
 import iconAwayOff from "../assets/icons/icon_away_off.png";
 import iconSleepOn from "../assets/icons/icon_sleep_on.png";
 import iconSleepOff from "../assets/icons/icon_sleep_off.png";
-import iconTemperature from "../assets/icons/icon_temp.png";
+import iconTemp from "../assets/icons/icon_temp.png";
+import iconTempSettings from "../assets/icons/icon_temp-setting.png";
+import iconDashboardActive from "../assets/icons/icon_menu_dashboad_active.png";
 
 export default function Icon({ type, className, size }: { type: string; className?: string; size?: number}) {
 
@@ -32,7 +34,9 @@ export default function Icon({ type, className, size }: { type: string; classNam
         "away-off": { src: iconAwayOff},
         "sleep-on": { src: iconSleepOn},
         "sleep-off": { src: iconSleepOff},
-        "temperature": { src: iconTemperature },
+        "temp": { src: iconTemp},
+        "temp-settings": { src: iconTempSettings },
+        "dashboard-active": { src: iconDashboardActive},
 
     };
 
