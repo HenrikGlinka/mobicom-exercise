@@ -8,10 +8,14 @@ export default function Navigation() {
                 <li>
                     <NavLink to="/">
                         {({ isActive }) => (
-                            <Icon
-                                type={isActive ? "dashboard-active" : "dashboard"}
-                                size={4}
-                            />
+                            <Icon type={isActive ? "dashboard-active" : "dashboard"} size={4} />
+                        )}
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/stats">
+                        {({ isActive }) => (
+                            <Icon type={isActive ? "stats-active" : "stats"} size={4} />
                         )}
                     </NavLink>
                 </li>
